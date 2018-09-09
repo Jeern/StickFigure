@@ -17,7 +17,6 @@ namespace Beebapps.Game.Input
 
         public TouchCollection GetState(GameTime currentTime)
         {
-#if WINDOWS
             MouseExtended.Current.GetState(currentTime);
             int x = MouseExtended.Current.CurrentState.X;
             int y = MouseExtended.Current.CurrentState.Y;
@@ -39,18 +38,6 @@ namespace Beebapps.Game.Input
                 CurrentStates = new TouchCollection();
                 TouchCount = 0;
             }
-#else
-            TouchCollection touches = TouchPanel.GetState();
-            TouchCount = touches.Count;
-            if (touches.Count <= 0)
-            {
-                CurrentStates = new TouchCollection();
-            }
-            else
-            {
-                CurrentStates = touches;
-            }
-#endif
             return CurrentStates;
         }
 

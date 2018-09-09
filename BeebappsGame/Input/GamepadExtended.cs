@@ -124,44 +124,11 @@ namespace Beebapps.Game.Input
             }
         }
 
-#if WINDOWS
         private IEnumerable<Buttons> GetButtonValues()
         {
             foreach (Buttons button in (Buttons[])Enum.GetValues(typeof(Buttons)))
                 yield return button;
         }
-#else
-        private IEnumerable<Buttons> GetButtonValues()
-        {
-            yield return Buttons.A;
-            yield return Buttons.B;
-            yield return Buttons.Back;
-            yield return Buttons.BigButton;
-            yield return Buttons.DPadDown;
-            yield return Buttons.DPadLeft;
-            yield return Buttons.DPadRight;
-            yield return Buttons.DPadUp;
-            yield return Buttons.LeftShoulder;
-            yield return Buttons.LeftStick;
-            yield return Buttons.LeftThumbstickDown;
-            yield return Buttons.LeftThumbstickLeft;
-            yield return Buttons.LeftThumbstickRight;
-            yield return Buttons.LeftThumbstickUp;
-            yield return Buttons.LeftTrigger;
-            yield return Buttons.RightShoulder;
-            yield return Buttons.RightStick;
-            yield return Buttons.RightThumbstickDown;
-            yield return Buttons.RightThumbstickLeft;
-            yield return Buttons.RightThumbstickRight;
-            yield return Buttons.RightThumbstickUp;
-            yield return Buttons.RightTrigger;
-            yield return Buttons.Start;
-            yield return Buttons.X;
-            yield return Buttons.Y;
-        }
-#endif
-
-
     }
 }
 

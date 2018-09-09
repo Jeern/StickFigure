@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Consts.cs" />
     <Compile Include="DrawingSurface.cs" />
+    <Compile Include="MouseCursor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

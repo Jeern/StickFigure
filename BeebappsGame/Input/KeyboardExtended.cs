@@ -1,5 +1,4 @@
-﻿#if WINDOWS
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
@@ -99,4 +98,3 @@ namespace Beebapps.Game.Input
         }
     }
 }
-#endif

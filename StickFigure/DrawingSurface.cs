@@ -1,4 +1,5 @@
-﻿using Beebapps.Game.Utils;
+﻿using Beebapps.Game.Input;
+using Beebapps.Game.Utils;
 using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,6 +37,8 @@ namespace StickFigure
             base.Initialize();
         }
 
+        private MouseCursor _mouseCursor;
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -43,7 +46,9 @@ namespace StickFigure
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            // TODO: use this.Content to load your game content here
+            _mouseCursor = new MouseCursor();
+
+
         }
 
         /// <summary>
@@ -62,10 +67,10 @@ namespace StickFigure
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            MouseExtended.Current.GetState(gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -79,6 +84,8 @@ namespace StickFigure
             GraphicsDevice.Clear(Color.White);
 
             Current.SpriteBatch.Begin();
+
+            _mouseCursor.Draw(gameTime);
 
             Current.SpriteBatch.DrawCircle(new Vector2(50, 150), 40, 100, Color.Black, 5);
             Current.SpriteBatch.DrawCircle(new Vector2(50, 250), 30, 100, Color.Black, 4);

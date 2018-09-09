@@ -1,5 +1,4 @@
-﻿#if WINDOWS
-namespace Beebapps.Game.Input
+﻿namespace Beebapps.Game.Input
 {
     public enum MouseButton
     {
@@ -10,4 +9,3 @@ namespace Beebapps.Game.Input
         XButton2
     }
 }
-#endif

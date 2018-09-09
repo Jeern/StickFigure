@@ -1,5 +1,4 @@
-﻿#if WINDOWS
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
 namespace Beebapps.Game.Input
@@ -82,4 +81,3 @@ namespace Beebapps.Game.Input
 
     }
 }
-#endif

@@ -1,9 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-#if IPHONE
-using MonoTouch.UIKit;
-#endif
 
 namespace Beebapps.Game.Utils
 {
@@ -54,9 +51,6 @@ namespace Beebapps.Game.Utils
             GameSpeed = 1.0F;
 			//Placeret i info.plist
 //			UIApplication.SharedApplication.StatusBarHidden = false; //Normal Exen er true
-#if IPHONE
-			UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
-#endif
         }
 
         protected override void Initialize()

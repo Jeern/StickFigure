@@ -117,7 +117,6 @@
     <Compile Include="Utils\DoubleRectangle.cs" />
     <Compile Include="Utils\Easing.cs" />
     <Compile Include="Utils\EasingUtil.cs" />
-    <Compile Include="Utils\Edition.cs" />
     <Compile Include="Utils\EventArgs.cs" />
     <Compile Include="Utils\FloatEasing.cs" />
     <Compile Include="Utils\FloatRectangle.cs" />
@@ -130,7 +129,6 @@
     <Compile Include="Utils\PinchableArea.cs" />
     <Compile Include="Utils\PinchZoomArea.cs" />
     <Compile Include="Utils\Primitives2D.cs" />
-    <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\RealRandom.cs" />
     <Compile Include="Utils\Resetable.cs" />
     <Compile Include="Utils\ScrollableArea.cs" />

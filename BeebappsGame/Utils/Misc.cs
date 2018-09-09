@@ -1,9 +1,6 @@
 using System;
 using Beebapps.Game.GraphicUtils;
 using Microsoft.Xna.Framework;
-#if IPHONE
-using MonoTouch.UIKit;
-#endif
 
 namespace Beebapps.Game.Utils
 {
@@ -47,22 +44,5 @@ namespace Beebapps.Game.Utils
             return (float)Math.Atan2(vector.X, -vector.Y);
         }
 
-        private static bool? _isIPad = null;
-
-        public static bool IsIPad
-        {
-            get
-            {
-#if IPHONE
-				if(!_isIPad.HasValue) 
-				{
-				    _isIPad = (UIScreen.MainScreen.Bounds.Height == 1024);
-				}
-				return _isIPad.Value;						
-#else
-                return false;
-#endif
-            }
-        }
     }
 }

@@ -60,11 +60,7 @@ namespace Beebapps.Game.Utils
         {
             get
             {
-#if IPHONE
-				float proximity = Util.IsIphone5 ? 35f * 1136f / 960f : 35f;
-#else
                 const float proximity = 35f;
-#endif
 				 
 				return Math.Abs(_pressPosition.Y - _releasePosition.Y) < proximity;
             }

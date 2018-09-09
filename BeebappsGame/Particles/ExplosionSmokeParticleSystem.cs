@@ -52,13 +52,8 @@ namespace Beebapps.Game.Particles
 
             // we need to reduce the number of particles on Windows Phone in order to keep
             // a good framerate
-#if WINDOWS_PHONE || IPHONE
-            MinNumParticles = 5;
-            MaxNumParticles = 10;
-#else
             MinNumParticles = 10;
             MaxNumParticles = 20;
-#endif
 
             MinRotationSpeed = -MathHelper.PiOver4;
             MaxRotationSpeed = MathHelper.PiOver4;
