@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Consts.cs" />
     <Compile Include="DrawingSurface.cs" />
+    <Compile Include="ConcreteJoint.cs" />
+    <Compile Include="JointManager.cs" />
+    <Compile Include="TemplateJoint.cs" />
+    <Compile Include="Joint.cs" />
     <Compile Include="MouseCursor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

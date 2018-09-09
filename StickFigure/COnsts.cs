@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StickFigure
+﻿namespace StickFigure
 {
     public static class Consts
     {
-        public const int ScreenWidth = 600;
-        public const int ScreenHeight = 550;
+        public const int ScreenWidth = 900;
+        public const int ScreenHeight = 750;
     }
 }

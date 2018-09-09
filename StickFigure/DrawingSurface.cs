@@ -1,4 +1,5 @@
-﻿using Beebapps.Game.Input;
+﻿using System.Collections.Generic;
+using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
 using C3.XNA;
 using Microsoft.Xna.Framework;
@@ -38,6 +39,7 @@ namespace StickFigure
         }
 
         private MouseCursor _mouseCursor;
+        private JointManager _jointManager;
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -47,8 +49,7 @@ namespace StickFigure
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _mouseCursor = new MouseCursor();
-
-
+            _jointManager = new JointManager(_mouseCursor);
         }
 
         /// <summary>
@@ -71,9 +72,12 @@ namespace StickFigure
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            _mouseCursor.Update(gameTime);
+            _jointManager.Update(gameTime);
 
             base.Update(gameTime);
         }
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -86,11 +90,7 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             _mouseCursor.Draw(gameTime);
-
-            Current.SpriteBatch.DrawCircle(new Vector2(50, 150), 40, 100, Color.Black, 5);
-            Current.SpriteBatch.DrawCircle(new Vector2(50, 250), 30, 100, Color.Black, 4);
-            Current.SpriteBatch.DrawCircle(new Vector2(50, 350), 10, 100, Color.Black, 3);
-            Current.SpriteBatch.DrawCircle(new Vector2(50, 450), 10, 100, Color.Red, 2);
+            _jointManager.Draw(gameTime);
 
             Current.SpriteBatch.End();
 
