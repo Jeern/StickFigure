@@ -13,9 +13,9 @@ namespace StickFigure
         {
             _mouseCursor = mouseCursor;
             _templateJoints.Add(new TemplateJoint(new Vector2(50, 150), 40, 5, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 250), 30, 4, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 350), 10, 3, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 450), 10, 2, Color.Red, false));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 240), 30, 4, Color.Black, true));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 300), 10, 3, Color.Black, true));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 340), 10, 2, Color.Red, false));
         }
 
         private readonly List<TemplateJoint> _templateJoints = new List<TemplateJoint>();
@@ -50,13 +50,22 @@ namespace StickFigure
             else
             {
                 var templateJoint = _draggingJoint as TemplateJoint;
-                if (_draggingJoint is ConcreteJoint)
+                var concreteJoint = _draggingJoint as ConcreteJoint;
+                if (concreteJoint != null)
                 {
+                    if (!IsWithinDrawArea(_mouseCursor))
+                    {
+                        _concreteJoints.Remove(concreteJoint);
+                    }
                     _draggingJoint = null;
                 }
                 else if (templateJoint != null)
                 {
-                    _concreteJoints.Add(new ConcreteJoint(templateJoint));
+                    if (IsWithinDrawArea(_mouseCursor))
+                    {
+                        _concreteJoints.Add(new ConcreteJoint(templateJoint));
+                    }
+
                     templateJoint.Position = templateJoint.OriginalPosition;
                     _draggingJoint = null;
                 }
@@ -80,5 +89,18 @@ namespace StickFigure
         }
 
         public Joint _draggingJoint;
+
+        public bool IsWithinDrawArea(MouseCursor cursor)
+        {
+            if (cursor.Position.X < 100)
+                return false;
+            if (cursor.Position.Y < 50)
+                return false;
+            if (cursor.Position.X > Consts.ScreenWidth)
+                return false;
+            if (cursor.Position.Y > Consts.ScreenHeight)
+                return false;
+            return true;
+        }
     }
 }
