@@ -129,6 +129,7 @@
     <Compile Include="Utils\MultiTouchArea.cs" />
     <Compile Include="Utils\PinchableArea.cs" />
     <Compile Include="Utils\PinchZoomArea.cs" />
+    <Compile Include="Utils\Primitives2D.cs" />
     <Compile Include="Utils\Reachability.cs" />
     <Compile Include="Utils\RealRandom.cs" />
     <Compile Include="Utils\Resetable.cs" />

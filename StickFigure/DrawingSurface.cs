@@ -1,4 +1,5 @@
 ﻿using Beebapps.Game.Utils;
+using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -77,7 +78,14 @@ namespace StickFigure
         {
             GraphicsDevice.Clear(Color.White);
 
-            // TODO: Add your drawing code here
+            Current.SpriteBatch.Begin();
+
+            Current.SpriteBatch.DrawCircle(new Vector2(50, 150), 40, 100, Color.Black, 5);
+            Current.SpriteBatch.DrawCircle(new Vector2(50, 250), 30, 100, Color.Black, 4);
+            Current.SpriteBatch.DrawCircle(new Vector2(50, 350), 10, 100, Color.Black, 3);
+            Current.SpriteBatch.DrawCircle(new Vector2(50, 450), 10, 100, Color.Red, 2);
+
+            Current.SpriteBatch.End();
 
             base.Draw(gameTime);
         }
