@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Beebapps.Game.Utils;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -7,15 +8,13 @@ namespace StickFigure
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class DrawingSurface : BeebappsGame
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-        public Game1()
+        public DrawingSurface()
         {
-            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+
         }
 
         /// <summary>
@@ -26,7 +25,12 @@ namespace StickFigure
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Current.GraphicsDeviceManager.IsFullScreen = false;
+            Current.GraphicsDeviceManager.PreferredBackBufferWidth = Consts.ScreenWidth;
+            Current.GraphicsDeviceManager.PreferredBackBufferHeight = Consts.ScreenHeight;
+            Current.GraphicsDeviceManager.ApplyChanges();
+            //Current.ViewPortSize = new Vector2(Consts.ScreenWidth, Consts.ScreenHeight);
+            //Current.GraphicsDevice.Viewport = new Viewport(0,0,Consts.ScreenWidth, Consts.ScreenHeight);
 
             base.Initialize();
         }
@@ -38,8 +42,6 @@ namespace StickFigure
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
         }
 
@@ -73,7 +75,7 @@ namespace StickFigure
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
 

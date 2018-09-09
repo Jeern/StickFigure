@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40AE4771-38C1-4F4B-80C0-D0A99C01F405}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BeebappsGame</RootNamespace>
+    <AssemblyName>BeebappsGame</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GraphicUtils\GameImage.cs" />
+    <Compile Include="GraphicUtils\ImageState.cs" />
+    <Compile Include="GraphicUtils\ITextureLoader.cs" />
+    <Compile Include="GraphicUtils\StateChangeType.cs" />
+    <Compile Include="GraphicUtils\ViewPortExtensions.cs" />
+    <Compile Include="Input\ClickTouch.cs" />
+    <Compile Include="Input\Extensions.cs" />
+    <Compile Include="Input\GamepadExtended.cs" />
+    <Compile Include="Input\GamepadTouch.cs" />
+    <Compile Include="Input\InputDeviceConstants.cs" />
+    <Compile Include="Input\InputDeviceExtended.cs" />
+    <Compile Include="Input\InputStateExtended.cs" />
+    <Compile Include="Input\KeyboardExtended.cs" />
+    <Compile Include="Input\MouseButton.cs" />
+    <Compile Include="Input\MouseExtended.cs" />
+    <Compile Include="Input\MultiTouchExtended.cs" />
+    <Compile Include="Input\MultitouchMouseWrap.cs" />
+    <Compile Include="Input\PinchTouch.cs" />
+    <Compile Include="Input\TouchExtended.cs" />
+    <Compile Include="Menus\CheckboxMenuItem.cs" />
+    <Compile Include="Menus\IntervalMenuItem.cs" />
+    <Compile Include="Menus\MenuItem.cs" />
+    <Compile Include="Menus\TextMenuItem.cs" />
+    <Compile Include="Menus\TouchImageMenu.cs" />
+    <Compile Include="Menus\TouchMenu.cs" />
+    <Compile Include="Particles\ExplosionParticleSystem.cs" />
+    <Compile Include="Particles\ExplosionSmokeParticleSystem.cs" />
+    <Compile Include="Particles\Particle.cs" />
+    <Compile Include="Particles\ParticleSystem.cs" />
+    <Compile Include="Particles\SmokePlumeParticleSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\IScene.cs" />
+    <Compile Include="Scenes\ISwipeableScene.cs" />
+    <Compile Include="Scenes\Scene.cs" />
+    <Compile Include="Scenes\SceneChange.cs" />
+    <Compile Include="Scenes\SceneChangeType.cs" />
+    <Compile Include="Scenes\SceneExtensions.cs" />
+    <Compile Include="Scenes\SceneScheduler.cs" />
+    <Compile Include="Scenes\SceneSwipeAnimation.cs" />
+    <Compile Include="Sequencers\AlternatingSequencer.cs" />
+    <Compile Include="Sequencers\ForwardingSequencer.cs" />
+    <Compile Include="Sequencers\ISequencer.cs" />
+    <Compile Include="Sequencers\MinMaxIterator.cs" />
+    <Compile Include="Sequencers\RandomSequencer.cs" />
+    <Compile Include="Sequencers\RepeatingSequencer.cs" />
+    <Compile Include="Sequencers\SequenceCreator.cs" />
+    <Compile Include="Sequencers\SequencedIterator.cs" />
+    <Compile Include="Sequencers\Sequencer.cs" />
+    <Compile Include="Sequencers\StaticSequencer.cs" />
+    <Compile Include="Sprites\DrawArea.cs" />
+    <Compile Include="Sprites\ICanLoadFromXml.cs" />
+    <Compile Include="Sprites\ISpatial.cs" />
+    <Compile Include="Sprites\Layer.cs" />
+    <Compile Include="Sprites\RelativeVector.cs" />
+    <Compile Include="Sprites\SpatialRow.cs" />
+    <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="Sprites\StaticBackground.cs" />
+    <Compile Include="Sprites\StaticObjects.cs" />
+    <Compile Include="Text\MultilineText.cs" />
+    <Compile Include="Text\SimpleText.cs" />
+    <Compile Include="Text\TextUtil.cs" />
+    <Compile Include="Text\VisualString.cs" />
+    <Compile Include="Utils\Animation.cs" />
+    <Compile Include="Utils\BaseTextures.cs" />
+    <Compile Include="Utils\BeebappsGame.cs" />
+    <Compile Include="Utils\Camera.cs" />
+    <Compile Include="Utils\ClickableArea.cs" />
+    <Compile Include="Utils\ClickZoomArea.cs" />
+    <Compile Include="Utils\Direction.cs" />
+    <Compile Include="Utils\DoubleRectangle.cs" />
+    <Compile Include="Utils\Easing.cs" />
+    <Compile Include="Utils\EasingUtil.cs" />
+    <Compile Include="Utils\Edition.cs" />
+    <Compile Include="Utils\EventArgs.cs" />
+    <Compile Include="Utils\FloatEasing.cs" />
+    <Compile Include="Utils\FloatRectangle.cs" />
+    <Compile Include="Utils\GameExtensions.cs" />
+    <Compile Include="Utils\Hashset.cs" />
+    <Compile Include="Utils\HorizontalAlignment.cs" />
+    <Compile Include="Utils\ILoadable.cs" />
+    <Compile Include="Utils\Misc.cs" />
+    <Compile Include="Utils\MultiTouchArea.cs" />
+    <Compile Include="Utils\PinchableArea.cs" />
+    <Compile Include="Utils\PinchZoomArea.cs" />
+    <Compile Include="Utils\Reachability.cs" />
+    <Compile Include="Utils\RealRandom.cs" />
+    <Compile Include="Utils\Resetable.cs" />
+    <Compile Include="Utils\ScrollableArea.cs" />
+    <Compile Include="Utils\SpriteBatchExtensions.cs" />
+    <Compile Include="Utils\StoryBoard.cs" />
+    <Compile Include="Utils\TimedEvent.cs" />
+    <Compile Include="Utils\Timer.cs" />
+    <Compile Include="Utils\TouchableArea.cs" />
+    <Compile Include="Utils\TouchableAreaUpdateable.cs" />
+    <Compile Include="Utils\TouchMoveArea.cs" />
+    <Compile Include="Utils\UpdateableRectangle.cs" />
+    <Compile Include="Utils\VectorEasing.cs" />
+    <Compile Include="Utils\VectorExtensions.cs" />
+    <Compile Include="Utils\VerticalAlignment.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
