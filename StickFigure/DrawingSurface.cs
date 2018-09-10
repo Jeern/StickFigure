@@ -40,6 +40,7 @@ namespace StickFigure
 
         private MouseCursor _mouseCursor;
         private JointManager _jointManager;
+        private LineManager _lineManager;
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -49,7 +50,8 @@ namespace StickFigure
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _mouseCursor = new MouseCursor();
-            _jointManager = new JointManager(_mouseCursor);
+            _lineManager = new LineManager(_mouseCursor);
+            _jointManager = new JointManager(_mouseCursor, _lineManager);
         }
 
         /// <summary>
@@ -73,6 +75,7 @@ namespace StickFigure
                 Exit();
 
             _mouseCursor.Update(gameTime);
+            _lineManager.Update(gameTime);
             _jointManager.Update(gameTime);
 
             base.Update(gameTime);
@@ -90,6 +93,7 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             _mouseCursor.Draw(gameTime);
+            _lineManager.Draw(gameTime);
             _jointManager.Draw(gameTime);
 
             Current.SpriteBatch.End();

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Beebapps.Game.Input;
+using Beebapps.Game.Utils;
+using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,10 +10,14 @@ namespace StickFigure
     public class JointManager
     {
         private readonly MouseCursor _mouseCursor;
+        private readonly LineManager _lineManager;
+        private bool _draggingLine = false;
+        private ConcreteJoint _lineStartJoint;
 
-        public JointManager(MouseCursor mouseCursor)
+        public JointManager(MouseCursor mouseCursor, LineManager lineManager)
         {
             _mouseCursor = mouseCursor;
+            _lineManager = lineManager;
             _templateJoints.Add(new TemplateJoint(new Vector2(50, 150), 40, 5, Color.Black, true));
             _templateJoints.Add(new TemplateJoint(new Vector2(50, 240), 30, 4, Color.Black, true));
             _templateJoints.Add(new TemplateJoint(new Vector2(50, 300), 10, 3, Color.Black, true));
@@ -31,6 +37,11 @@ namespace StickFigure
             {
                 joint.Draw(gameTime);
             }
+
+            if (_draggingLine && _lineStartJoint != null)
+            {
+                BeebappsGame.Current.SpriteBatch.DrawLine(_lineStartJoint.Position, _mouseCursor.Position, Color.Gray, 4f);
+            }
         }
 
         public void Update(GameTime gameTime)
@@ -46,28 +57,53 @@ namespace StickFigure
                 {
                     _draggingJoint.Position = _mouseCursor.Position;
                 }
+                return;
+            }
+
+            var templateJoint = _draggingJoint as TemplateJoint;
+            var concreteJoint = _draggingJoint as ConcreteJoint;
+            if (concreteJoint != null)
+            {
+                if (!IsWithinDrawArea(_mouseCursor))
+                {
+                    _concreteJoints.Remove(concreteJoint);
+                    _lineManager.DeleteJoint(concreteJoint);
+                }
+                _draggingJoint = null;
+            }
+            else if (templateJoint != null)
+            {
+                if (IsWithinDrawArea(_mouseCursor))
+                {
+                    _concreteJoints.Add(new ConcreteJoint(templateJoint));
+                }
+
+                templateJoint.Position = templateJoint.OriginalPosition;
+                _draggingJoint = null;
+            }
+
+            if (MouseExtended.Current.CurrentState.RightButton == ButtonState.Pressed)
+            {
+                if (!_draggingLine)
+                {
+                    _lineStartJoint = GetFirstTouching(_mouseCursor) as ConcreteJoint;
+                    if (_lineStartJoint != null)
+                    {
+                        _draggingLine = true;
+                    }
+                }
             }
             else
             {
-                var templateJoint = _draggingJoint as TemplateJoint;
-                var concreteJoint = _draggingJoint as ConcreteJoint;
-                if (concreteJoint != null)
+                if (_draggingLine)
                 {
-                    if (!IsWithinDrawArea(_mouseCursor))
+                    var lineEndJoint = GetFirstTouching(_mouseCursor) as ConcreteJoint;
+                    if (lineEndJoint != null)
                     {
-                        _concreteJoints.Remove(concreteJoint);
+                        _lineManager.AddConnection(_lineStartJoint, lineEndJoint);
                     }
-                    _draggingJoint = null;
-                }
-                else if (templateJoint != null)
-                {
-                    if (IsWithinDrawArea(_mouseCursor))
-                    {
-                        _concreteJoints.Add(new ConcreteJoint(templateJoint));
-                    }
-
-                    templateJoint.Position = templateJoint.OriginalPosition;
-                    _draggingJoint = null;
+                    _draggingLine = false;
+                    _lineStartJoint = null;
                 }
             }
         }

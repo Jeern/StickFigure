@@ -45,6 +45,8 @@
     <Compile Include="DrawingSurface.cs" />
     <Compile Include="ConcreteJoint.cs" />
     <Compile Include="JointManager.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="LineManager.cs" />
     <Compile Include="TemplateJoint.cs" />
     <Compile Include="Joint.cs" />
     <Compile Include="MouseCursor.cs" />
