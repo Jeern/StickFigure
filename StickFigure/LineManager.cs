@@ -15,7 +15,10 @@ namespace StickFigure
 
         public void Update(GameTime gameTime)
         {
-
+            foreach (var line in _lines)
+            {
+                line.Update(gameTime);
+            }
         }
 
         public void Draw(GameTime gameTime)
