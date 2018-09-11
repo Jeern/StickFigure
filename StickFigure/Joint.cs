@@ -7,10 +7,12 @@ namespace StickFigure
     public abstract class Joint
     {
         public Vector2 Position { get; set; }
-        public float Radius { get; }
-        public float Thickness { get; }
-        public Color Color { get; }
-        public bool Visible { get; }
+        public float Radius { get; set; }
+        public float Thickness { get; set; }
+        public Color Color { get; set; }
+        public bool Visible { get; set; }
+
+        protected Joint() { }
 
         protected Joint(Vector2 position, float radius, float thickness, Color color, bool visible)
         {

@@ -74,11 +74,24 @@ namespace StickFigure
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            RefreshFiles();
+
             _mouseCursor.Update(gameTime);
             _lineManager.Update(gameTime);
             _jointManager.Update(gameTime);
 
+            Save();
             base.Update(gameTime);
+        }
+
+        private void Save()
+        {
+            if (!_actionHappened  && Keyboard.GetState().IsKeyDown(Keys.S))
+            {
+                _actionHappened = true;
+                FileManager.Save(FileManager.GetFileName(Globals.CurrentShownNumber, Globals.CurrentFolder),
+                    _jointManager.ToFile());
+            }
         }
 
 
@@ -99,6 +112,26 @@ namespace StickFigure
             Current.SpriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private bool _actionHappened = true;
+        public void RefreshFiles()
+        {
+            if (_actionHappened)
+            {
+                _actionHappened = false;
+                Globals.Files = FileManager.LoadAllFiles(Globals.CurrentFolder);
+                if (!Globals.Files.ContainsKey(Globals.CurrentShownNumber))
+                {
+                    Globals.CurrentShownNumber = 1;
+                }
+
+                if (Globals.Files.ContainsKey(Globals.CurrentShownNumber))
+                {
+                    var file = Globals.Files[Globals.CurrentShownNumber];
+                    _jointManager.FromFile(file);
+                }
+            }
         }
     }
 }

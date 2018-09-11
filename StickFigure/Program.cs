@@ -14,8 +14,22 @@ namespace StickFigure
         [STAThread]
         static void Main()
         {
+            Globals.CurrentFolder = FileManager.ChooseFolder();
+            if(Globals.CurrentFolder == "")
+                return;
+            Globals.CurrentShownNumber = 1;
+            Globals.CurrentActionNumber = 1;
+
             using (var game = new DrawingSurface())
                 game.Run();
+
+
+            //Pil venstre/højre til op ned til næste fil der skal vises
+            //Pil op/ned til næste fil der skal kopieres / Finish
+            //S = Save
+            //C = Kopier
+            //F = Finish
+            //I = In-between generering
         }
     }
 #endif

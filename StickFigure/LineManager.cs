@@ -6,16 +6,17 @@ namespace StickFigure
     public class LineManager
     {
         private readonly MouseCursor _mouseCursor;
-        private readonly List<Line> _lines = new List<Line>();
+        public List<Line> Lines { get; set; }
 
         public LineManager(MouseCursor mouseCursor)
         {
             _mouseCursor = mouseCursor;
+            Lines = new List<Line>();
         }
 
         public void Update(GameTime gameTime)
         {
-            foreach (var line in _lines)
+            foreach (var line in Lines)
             {
                 line.Update(gameTime);
             }
@@ -23,25 +24,25 @@ namespace StickFigure
 
         public void Draw(GameTime gameTime)
         {
-            foreach (var line in _lines)
+            foreach (var line in Lines)
             {
                 line.Draw(gameTime);
             }
         }
 
-        public void AddConnection(Joint start, Joint finish)
+        public void AddConnection(ConcreteJoint start, ConcreteJoint finish)
         {
-            _lines.Add(new Line(start, finish));
+            Lines.Add(new Line(start, finish));
         }
 
         public void DeleteJoint(Joint joint)
         {
-            for(int idx=_lines.Count-1; idx >= 0; idx--)
+            for(int idx= Lines.Count-1; idx >= 0; idx--)
             {
-                var line = _lines[idx];
+                var line = Lines[idx];
                 if (line.Start == joint || line.Finish == joint)
                 {
-                    _lines.RemoveAt(idx);
+                    Lines.RemoveAt(idx);
                 }
             }
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
 using C3.XNA;
@@ -11,7 +13,7 @@ namespace StickFigure
     {
         private readonly MouseCursor _mouseCursor;
         private readonly LineManager _lineManager;
-        private bool _draggingLine = false;
+        private bool _draggingLine;
         private ConcreteJoint _lineStartJoint;
 
         public JointManager(MouseCursor mouseCursor, LineManager lineManager)
@@ -25,7 +27,7 @@ namespace StickFigure
         }
 
         private readonly List<TemplateJoint> _templateJoints = new List<TemplateJoint>();
-        private readonly List<ConcreteJoint> _concreteJoints = new List<ConcreteJoint>();
+        private List<ConcreteJoint> _concreteJoints = new List<ConcreteJoint>();
 
         public void Draw(GameTime gameTime)
         {
@@ -137,6 +139,31 @@ namespace StickFigure
             if (cursor.Position.Y > Consts.ScreenHeight)
                 return false;
             return true;
+        }
+
+        public JointFile ToFile()
+        {
+            return new JointFile {
+                ConcreteJoints = _concreteJoints,
+                Lines = _lineManager.Lines
+            };
+        }
+
+        public void FromFile(JointFile file)
+        {
+            _concreteJoints = file.ConcreteJoints;
+            var jointDict = _concreteJoints.ToDictionary(j => j.Id, j => j);
+            var lines = new List<Line>();
+            foreach (var line in file.Lines)
+            {
+                var start = jointDict.ContainsKey(line.Start.Id) ? jointDict[line.Start.Id] : null;
+                var end = jointDict.ContainsKey(line.Finish.Id) ? jointDict[line.Finish.Id] : null;
+                if(start == null || end == null)
+                    continue;
+                lines.Add(new Line(start,  end));
+            }
+
+            _lineManager.Lines = lines;
         }
     }
 }
