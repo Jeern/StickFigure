@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
 using C3.XNA;
@@ -74,6 +76,8 @@ namespace StickFigure
         protected override void Update(GameTime gameTime)
         {
             MouseExtended.Current.GetState(gameTime);
+            KeyboardExtended.Current.GetState(gameTime);
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -83,19 +87,103 @@ namespace StickFigure
             _lineManager.Update(gameTime);
             _jointManager.Update(gameTime);
 
+            LeftRightArrowKey();
+            UpDOwnArrowKey();
             Save();
+            MarkAsLast();
+            Copy();
+
             base.Update(gameTime);
+        }
+
+        private void LeftRightArrowKey()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.Left))
+            {
+                _actionHappened = true;
+                var keys = Globals.Files.Keys.OrderBy(k => k);
+                var max = keys.LastOrDefault();
+                var min = keys.FirstOrDefault();
+                do
+                {
+                    Globals.CurrentShownNumber--;
+                    if (Globals.CurrentShownNumber < min && max < 1)
+                    {
+                        Globals.CurrentShownNumber = 1;
+                    }
+                    else if(Globals.CurrentShownNumber < min)
+                    {
+                        Globals.CurrentShownNumber = max;
+                    }
+                } while (Globals.CurrentShownNumber != 1 && !Globals.Files.ContainsKey(Globals.CurrentShownNumber));
+            }
+            else if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.Right))
+            {
+                _actionHappened = true;
+                var keys = Globals.Files.Keys.OrderBy(k => k);
+                var max = keys.LastOrDefault();
+                do
+                {
+                    Globals.CurrentShownNumber++;
+                    if (Globals.CurrentShownNumber > max)
+                    {
+                        Globals.CurrentShownNumber = 1;
+                    }
+                } while (Globals.CurrentShownNumber != 1 && !Globals.Files.ContainsKey(Globals.CurrentShownNumber));
+            }
+        }
+
+        private void UpDOwnArrowKey()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.Up))
+            {
+                _actionHappened = true;
+                Globals.CurrentActionNumber++;
+            }
+            else if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.Down))
+            {
+                _actionHappened = true;
+                Globals.CurrentActionNumber--;
+                if (Globals.CurrentActionNumber < 1)
+                {
+                    Globals.CurrentActionNumber = 1;
+                }
+            }
         }
 
         private void Save()
         {
-            if (!_actionHappened  && Keyboard.GetState().IsKeyDown(Keys.S))
+            if (!_actionHappened  && KeyboardExtended.Current.WasSingleClick(Keys.S))
             {
                 _actionHappened = true;
                 FileManager.Save(FileManager.GetFileName(Globals.CurrentShownNumber, Globals.CurrentFolder),
                     _jointManager.ToFile());
             }
         }
+
+        private void MarkAsLast()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.L))
+            {
+                _actionHappened = true;
+                FileManager.MarkAsLast(FileManager.GetFileName(Globals.CurrentActionNumber, Globals.CurrentFolder));
+            }
+        }
+
+        private void Copy()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.C))
+            {
+                _actionHappened = true;
+                if (Globals.CurrentShownNumber != Globals.CurrentActionNumber)
+                {
+                    FileManager.Copy(FileManager.GetFileName(Globals.CurrentShownNumber, Globals.CurrentFolder),
+                        FileManager.GetFileName(Globals.CurrentActionNumber, Globals.CurrentFolder));
+                }
+            }
+        }
+
+
 
 
         /// <summary>
@@ -109,7 +197,7 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             Current.SpriteBatch.DrawString(_sfFont, "Use Arrow keys - Left/Right to change shown file, and Up/Down to change the one that is Copied to or marked as Last.", new Vector2(20), Color.Black);
-            Current.SpriteBatch.DrawString(_sfFont, $"Current: {Globals.CurrentShownNumber}, (S)ave: {Globals.CurrentShownNumber}, (C)opy to: {Globals.CurrentActionNumber}, Mark as (L)ast: {Globals.CurrentActionNumber}, (I)n-between generation", new Vector2(20, 40), Color.Black);
+            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
             _lineManager.Draw(gameTime);
@@ -139,10 +227,5 @@ namespace StickFigure
                 }
             }
         }
-
-        //private string GetFormattedTitleString()
-        //{
-
-        //}
     }
 }
