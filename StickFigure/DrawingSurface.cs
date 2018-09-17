@@ -13,6 +13,8 @@ namespace StickFigure
     /// </summary>
     public class DrawingSurface : BeebappsGame
     {
+        private SpriteFont _sfFont;
+
         public DrawingSurface()
         {
             Content.RootDirectory = "Content";
@@ -52,6 +54,7 @@ namespace StickFigure
             _mouseCursor = new MouseCursor();
             _lineManager = new LineManager(_mouseCursor);
             _jointManager = new JointManager(_mouseCursor, _lineManager);
+            _sfFont = Content.Load<SpriteFont>("SF");
         }
 
         /// <summary>
@@ -105,6 +108,9 @@ namespace StickFigure
 
             Current.SpriteBatch.Begin();
 
+            Current.SpriteBatch.DrawString(_sfFont, "Use Arrow keys - Left/Right to change shown file, and Up/Down to change the one that is Copied to or marked as Last.", new Vector2(20), Color.Black);
+            Current.SpriteBatch.DrawString(_sfFont, $"Current: {Globals.CurrentShownNumber}, (S)ave: {Globals.CurrentShownNumber}, (C)opy to: {Globals.CurrentActionNumber}, Mark as (L)ast: {Globals.CurrentActionNumber}, (I)n-between generation", new Vector2(20, 40), Color.Black);
+
             _mouseCursor.Draw(gameTime);
             _lineManager.Draw(gameTime);
             _jointManager.Draw(gameTime);
@@ -133,5 +139,10 @@ namespace StickFigure
                 }
             }
         }
+
+        //private string GetFormattedTitleString()
+        //{
+
+        //}
     }
 }
