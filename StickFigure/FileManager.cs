@@ -67,7 +67,7 @@ namespace StickFigure
             for (int idx = keys.Count - 1; idx >= 0; idx--)
             {
                 var key = keys.ElementAt(idx);
-                if (key >= lastKey)
+                if (key > lastKey)
                 {
                     dict.Remove(key);
                 }

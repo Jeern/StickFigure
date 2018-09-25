@@ -92,8 +92,67 @@ namespace StickFigure
             Save();
             MarkAsLast();
             Copy();
+            InBetweenGeneration();
 
             base.Update(gameTime);
+        }
+
+        private void InBetweenGeneration()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.I))
+            {
+                _actionHappened = true;
+                if (Globals.Files.Count < 2)
+                    return;
+
+                var lastFileNumber = 0;
+                foreach (var fileNumber in Globals.Files.Keys.OrderBy(k => k))
+                {
+                    if (lastFileNumber > 0 && lastFileNumber < fileNumber - 1)
+                    {
+                        InBetweenGeneration(lastFileNumber, fileNumber);
+                    }
+
+                    lastFileNumber = fileNumber;
+                }
+            }
+        }
+
+        private void InBetweenGeneration(int from, int to)
+        {
+            var file1 = Globals.Files[from];
+            var file2 = Globals.Files[to];
+            if (file2.IsLast)
+            {
+                file2 = Globals.Files[1];
+            }
+
+            for (int fileNumber = from + 1; fileNumber < to; fileNumber++)
+            {
+                var newJoints = new List<ConcreteJoint>();
+                foreach (var concreteJoint1 in file1.ConcreteJoints)
+                {
+                    var concreteJoint2 = file2.ConcreteJoints.FirstOrDefault(cj => cj.Id == concreteJoint1.Id);
+                    if (concreteJoint2 == null)
+                    {
+                        newJoints.Add(concreteJoint1);
+                    }
+                    else
+                    {
+                        newJoints.Add(ConcreteJoint.CreateInBetweenJoint(concreteJoint1, concreteJoint2, fileNumber - from, to - from));
+                    }
+                }
+
+                var newFile = new JointFile
+                {
+                    ConcreteJoints = newJoints,
+                    Lines = file1.Lines
+                };
+                FileManager.Save(FileManager.GetFileName(fileNumber, Globals.CurrentFolder), newFile);
+            }
+
+
+
         }
 
         private void LeftRightArrowKey()
