@@ -50,6 +50,7 @@
     <Compile Include="JointManager.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineManager.cs" />
+    <Compile Include="PngCreator.cs" />
     <Compile Include="TemplateJoint.cs" />
     <Compile Include="Joint.cs" />
     <Compile Include="MouseCursor.cs" />

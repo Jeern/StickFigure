@@ -29,15 +29,19 @@ namespace StickFigure
         private readonly List<TemplateJoint> _templateJoints = new List<TemplateJoint>();
         private List<ConcreteJoint> _concreteJoints = new List<ConcreteJoint>();
 
-        public void Draw(GameTime gameTime)
+        public void Draw(Vector2 offset, bool drawFinal)
         {
-            foreach (var joint in _templateJoints)
+            if (!drawFinal)
             {
-                joint.Draw(gameTime);
+                foreach (var joint in _templateJoints)
+                {
+                    joint.Draw(offset, false);
+                }
             }
+
             foreach (var joint in _concreteJoints)
             {
-                joint.Draw(gameTime);
+                joint.Draw(offset, drawFinal);
             }
 
             if (_draggingLine && _lineStartJoint != null)

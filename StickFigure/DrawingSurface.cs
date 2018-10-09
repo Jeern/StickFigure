@@ -93,6 +93,7 @@ namespace StickFigure
             MarkAsLast();
             Copy();
             InBetweenGeneration();
+            CreatePng();
 
             base.Update(gameTime);
         }
@@ -210,6 +211,19 @@ namespace StickFigure
             }
         }
 
+        private void CreatePng()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.P))
+            {
+                _actionHappened = true;
+                var dimensions = PngCreator.GetDimensions(Globals.Files.Values.SelectMany(f => f.ConcreteJoints));
+                var texture = PngCreator.GetTexture(dimensions, GraphicsDevice);
+                DrawToRenderTarget(texture, new Vector2(-dimensions.X, - dimensions.Y));
+                PngCreator.Save(texture, FileManager.GetPngFileName(Globals.CurrentShownNumber, Globals.CurrentFolder));
+
+            }
+        }
+
         private void Save()
         {
             if (!_actionHappened  && KeyboardExtended.Current.WasSingleClick(Keys.S))
@@ -256,15 +270,36 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             Current.SpriteBatch.DrawString(_sfFont, "Use Arrow keys - Left/Right to change shown file, and Up/Down to change the one that is Copied to or marked as Last.", new Vector2(20), Color.Black);
-            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation", new Vector2(20, 40), Color.Black);
+            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
-            _lineManager.Draw(gameTime);
-            _jointManager.Draw(gameTime);
+            DrawStickFigure(Vector2.Zero, false);
 
             Current.SpriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void DrawToRenderTarget(RenderTarget2D target, Vector2 offSet)
+        {
+            GraphicsDevice.SetRenderTarget(target);
+
+            GraphicsDevice.DepthStencilState = new DepthStencilState { DepthBufferEnable = true };
+
+            GraphicsDevice.Clear(Color.White);
+            // Draw the scene
+            Current.SpriteBatch.Begin();
+            DrawStickFigure(offSet, true);
+            Current.SpriteBatch.End();
+
+            // Drop the render target
+            GraphicsDevice.SetRenderTarget(null);
+        }
+
+        public void DrawStickFigure(Vector2 offSet, bool drawFinal)
+        {
+            _lineManager.Draw(offSet);
+            _jointManager.Draw(offSet, drawFinal);
         }
 
         private bool _actionHappened = true;

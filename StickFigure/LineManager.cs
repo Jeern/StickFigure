@@ -22,11 +22,11 @@ namespace StickFigure
             }
         }
 
-        public void Draw(GameTime gameTime)
+        public void Draw(Vector2 offSet)
         {
             foreach (var line in Lines)
             {
-                line.Draw(gameTime);
+                line.Draw(offSet);
             }
         }
 

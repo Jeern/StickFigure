@@ -111,6 +111,11 @@ namespace StickFigure
             return Path.Combine(folder, $"sf{number}.txt");
         }
 
+        public static string GetPngFileName(int number, string folder)
+        {
+            return Path.Combine(folder, "Pngs",  $"sf{number}.png");
+        }
+
         public static void MarkAsLast(string fileName)
         {
             File.WriteAllText(fileName, LastFileText);

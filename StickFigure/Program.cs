@@ -30,6 +30,7 @@ namespace StickFigure
             //C = Kopier
             //F = Finish
             //I = In-between generering
+            //P = Create PNG
         }
     }
 #endif

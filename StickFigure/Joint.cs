@@ -23,9 +23,12 @@ namespace StickFigure
             Visible = visible;
         }
 
-        public void Draw(GameTime gameTime)
+        public void Draw(Vector2 offSet, bool drawFinal)
         {
-            BeebappsGame.Current.SpriteBatch.DrawCircle(Position, Radius, 100, Color, Thickness);
+            if (!drawFinal || Visible)
+            {
+                BeebappsGame.Current.SpriteBatch.DrawCircle(Position + offSet, Radius, 100, Color, Thickness);
+            }
         }
 
         public bool PointIsWithin(Vector2 vector)

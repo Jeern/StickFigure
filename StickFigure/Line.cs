@@ -26,9 +26,9 @@ namespace StickFigure
         }
 
 
-        public void Draw(GameTime gameTime)
+        public void Draw(Vector2 offSet)
         {
-            BeebappsGame.Current.SpriteBatch.DrawLine(_start, _finish, Color.Black, 4f);
+            BeebappsGame.Current.SpriteBatch.DrawLine(_start + offSet, _finish + offSet, Color.Black, 4f);
         }
     }
 }
