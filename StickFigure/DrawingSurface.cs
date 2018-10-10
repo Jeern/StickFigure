@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
-using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -94,6 +92,7 @@ namespace StickFigure
             Copy();
             InBetweenGeneration();
             CreatePng();
+            CreateGif();
 
             base.Update(gameTime);
         }
@@ -224,6 +223,15 @@ namespace StickFigure
             }
         }
 
+        private void CreateGif()
+        {
+            if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.G))
+            {
+                _actionHappened = true;
+                GifCreator.CreateGif(FileManager.GetPngFolder(Globals.CurrentFolder));
+            }
+        }
+
         private void Save()
         {
             if (!_actionHappened  && KeyboardExtended.Current.WasSingleClick(Keys.S))
@@ -270,7 +278,7 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             Current.SpriteBatch.DrawString(_sfFont, "Use Arrow keys - Left/Right to change shown file, and Up/Down to change the one that is Copied to or marked as Last.", new Vector2(20), Color.Black);
-            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng", new Vector2(20, 40), Color.Black);
+            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng, (G)if", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
             DrawStickFigure(Vector2.Zero, false);
