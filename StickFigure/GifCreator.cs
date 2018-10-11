@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -33,10 +34,10 @@ namespace StickFigure
             using (var br = new BinaryReader(ms))
             using (var bw = new BinaryWriter(new FileStream(gifFile, FileMode.Create)))
             {
-                string[] pngFiles = Directory.GetFiles(pngfolder, "*.png").OrderBy(f => f).ToArray();
+                string[] pngFiles = Directory.GetFiles(pngfolder, "*.png");
                 ConvertPngsToJpg(pngFiles);
 
-                string[] jpgFiles = Directory.GetFiles(pngfolder, "*.jpg").OrderBy(f => f).ToArray();
+                string[] jpgFiles = Directory.GetFiles(pngfolder, "*.jpg").OrderBy(NumberPart).ToArray();
 
                 Image.FromFile(jpgFiles[0]).Save(ms, ImageFormat.Gif);
                 byte[] bytes = ms.ToArray();
@@ -53,7 +54,11 @@ namespace StickFigure
                 }
                 bw.Write(bytes[bytes.Length - 1]);
             }
+        }
 
+        private static int NumberPart(string fileName)
+        {
+            return Convert.ToInt32(Path.GetFileNameWithoutExtension(fileName).Replace("sf", ""));
         }
 
         private static  void WriteGifImg(byte[] bytes, BinaryWriter bw)
