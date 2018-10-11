@@ -10,8 +10,7 @@ namespace StickFigure
         {
         }
 
-        public ConcreteJoint(TemplateJoint template) : base(template.Position, template.Radius, template.Thickness,
-            template.Color, template.Visible)
+        public ConcreteJoint(TemplateJoint template) : base(template.Position, template.Radius, template.Thickness, template.Visible)
         {
             Id = Guid.NewGuid();
         }
@@ -24,7 +23,6 @@ namespace StickFigure
             var newJoint = new ConcreteJoint
             {
                 Id = joint1.Id,
-                Color = joint1.Color,
                 Radius = joint1.Radius,
                 Thickness = joint1.Thickness,
                 Visible = joint1.Visible,

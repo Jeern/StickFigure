@@ -9,25 +9,23 @@ namespace StickFigure
         public Vector2 Position { get; set; }
         public float Radius { get; set; }
         public float Thickness { get; set; }
-        public Color Color { get; set; }
         public bool Visible { get; set; }
 
         protected Joint() { }
 
-        protected Joint(Vector2 position, float radius, float thickness, Color color, bool visible)
+        protected Joint(Vector2 position, float radius, float thickness, bool visible)
         {
             Position = position;
             Radius = radius;
             Thickness = thickness;
-            Color = color;
             Visible = visible;
         }
 
-        public void Draw(Vector2 offSet, bool drawFinal)
+        public void Draw(Vector2 offSet, bool drawFinal, Color color)
         {
             if (!drawFinal || Visible)
             {
-                BeebappsGame.Current.SpriteBatch.DrawCircle(Position + offSet, Radius, 100, Color, Thickness);
+                BeebappsGame.Current.SpriteBatch.DrawCircle(Position + offSet, Radius, 100, Visible ? color : Color.Red, Thickness);
             }
         }
 

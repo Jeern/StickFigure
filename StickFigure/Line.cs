@@ -26,9 +26,9 @@ namespace StickFigure
         }
 
 
-        public void Draw(Vector2 offSet)
+        public void Draw(Vector2 offSet, Color color)
         {
-            BeebappsGame.Current.SpriteBatch.DrawLine(_start + offSet, _finish + offSet, Color.Black, 4f);
+            BeebappsGame.Current.SpriteBatch.DrawLine(_start + offSet, _finish + offSet, color, 4f);
         }
     }
 }

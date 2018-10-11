@@ -31,7 +31,7 @@ namespace StickFigure
             string gifFile = Path.Combine(pngfolder, "sf.gif");
 
             using (var ms = new MemoryStream())
-            using (var br = new BinaryReader(ms))
+            //using (var br = new BinaryReader(ms))
             using (var bw = new BinaryWriter(new FileStream(gifFile, FileMode.Create)))
             {
                 string[] pngFiles = Directory.GetFiles(pngfolder, "*.png");

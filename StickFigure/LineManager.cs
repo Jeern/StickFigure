@@ -22,11 +22,11 @@ namespace StickFigure
             }
         }
 
-        public void Draw(Vector2 offSet)
+        public void Draw(Vector2 offSet, Color color)
         {
             foreach (var line in Lines)
             {
-                line.Draw(offSet);
+                line.Draw(offSet, color);
             }
         }
 

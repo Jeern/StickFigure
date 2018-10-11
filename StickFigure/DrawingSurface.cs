@@ -281,7 +281,7 @@ namespace StickFigure
             Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng, (G)if", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
-            DrawStickFigure(Vector2.Zero, false);
+            DrawStickFigure(Vector2.Zero, false, Color.Black);
 
             Current.SpriteBatch.End();
 
@@ -294,20 +294,22 @@ namespace StickFigure
 
             GraphicsDevice.DepthStencilState = new DepthStencilState { DepthBufferEnable = true };
 
-            GraphicsDevice.Clear(Color.White);
+//#90a959
+            GraphicsDevice.Clear(new Color(144, 169, 89));
+            //GraphicsDevice.Clear(Color.Transparent);
             // Draw the scene
             Current.SpriteBatch.Begin();
-            DrawStickFigure(offSet, true);
+            DrawStickFigure(offSet, true, Color.White);
             Current.SpriteBatch.End();
 
             // Drop the render target
             GraphicsDevice.SetRenderTarget(null);
         }
 
-        public void DrawStickFigure(Vector2 offSet, bool drawFinal)
+        public void DrawStickFigure(Vector2 offSet, bool drawFinal, Color color)
         {
-            _lineManager.Draw(offSet);
-            _jointManager.Draw(offSet, drawFinal);
+            _lineManager.Draw(offSet, color);
+            _jointManager.Draw(offSet, drawFinal, color);
         }
 
         private bool _actionHappened = true;

@@ -20,28 +20,28 @@ namespace StickFigure
         {
             _mouseCursor = mouseCursor;
             _lineManager = lineManager;
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 150), 40, 5, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 240), 30, 4, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 300), 10, 3, Color.Black, true));
-            _templateJoints.Add(new TemplateJoint(new Vector2(50, 340), 10, 2, Color.Red, false));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 150), 40, 5, true));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 240), 30, 4, true));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 300), 10, 3, true));
+            _templateJoints.Add(new TemplateJoint(new Vector2(50, 340), 10, 2, false));
         }
 
         private readonly List<TemplateJoint> _templateJoints = new List<TemplateJoint>();
         private List<ConcreteJoint> _concreteJoints = new List<ConcreteJoint>();
 
-        public void Draw(Vector2 offset, bool drawFinal)
+        public void Draw(Vector2 offset, bool drawFinal, Color color)
         {
             if (!drawFinal)
             {
                 foreach (var joint in _templateJoints)
                 {
-                    joint.Draw(offset, false);
+                    joint.Draw(offset, false, color);
                 }
             }
 
             foreach (var joint in _concreteJoints)
             {
-                joint.Draw(offset, drawFinal);
+                joint.Draw(offset, drawFinal, color);
             }
 
             if (_draggingLine && _lineStartJoint != null)
