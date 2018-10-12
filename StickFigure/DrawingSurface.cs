@@ -92,7 +92,7 @@ namespace StickFigure
             MarkAsLast();
             Copy();
             InBetweenGeneration();
-            CreatePng();
+            CreateGrahpic();
             CreateGif();
 
             base.Update(gameTime);
@@ -211,7 +211,7 @@ namespace StickFigure
             }
         }
 
-        private void CreatePng()
+        private void CreateGrahpic()
         {
             if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.P))
             {
@@ -219,7 +219,9 @@ namespace StickFigure
                 var dimensions = PngCreator.GetDimensions(Globals.Files.Values.SelectMany(f => f.ConcreteJoints));
                 var texture = PngCreator.GetTexture(dimensions, GraphicsDevice);
                 DrawToRenderTarget(texture, new Vector2(-dimensions.X, - dimensions.Y));
-                PngCreator.Save(texture, FileManager.GetPngFileName(Globals.CurrentShownNumber, Globals.CurrentFolder));
+                string pngFile = FileManager.GetPngFileName(Globals.CurrentShownNumber, Globals.CurrentFolder);
+                PngCreator.Save(texture, pngFile);
+                JpgCreator.ConvertPngToJpg(pngFile, FileManager.GetJpgFolder(Globals.CurrentFolder));
 
             }
         }
@@ -229,7 +231,7 @@ namespace StickFigure
             if (!_actionHappened && KeyboardExtended.Current.WasSingleClick(Keys.G))
             {
                 _actionHappened = true;
-                GifCreator.CreateGif(FileManager.GetPngFolder(Globals.CurrentFolder));
+                GifCreator.CreateGif(Globals.CurrentFolder);
             }
         }
 

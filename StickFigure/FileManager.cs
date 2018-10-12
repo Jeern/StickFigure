@@ -111,11 +111,6 @@ namespace StickFigure
             return Path.Combine(folder, $"sf{number}.txt");
         }
 
-        public static string GetJpgFileName(int number, string folder)
-        {
-            return Path.Combine(GetJpgFolder(folder), $"sf{number}.jpg");
-        }
-
         public static string GetPngFileName(int number, string folder)
         {
             return Path.Combine(GetPngFolder(folder), $"sf{number}.png");
@@ -129,6 +124,11 @@ namespace StickFigure
         public static string GetPngFolder(string folder)
         {
             return Path.Combine(folder, "Pngs");
+        }
+
+        public static string GetGifFolder(string folder)
+        {
+            return Path.Combine(folder, "Gif");
         }
 
         public static void MarkAsLast(string fileName)

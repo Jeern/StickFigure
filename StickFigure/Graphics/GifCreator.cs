@@ -15,29 +15,18 @@ namespace StickFigure.Graphics
         private static readonly byte[] GifAnimation = { 33, 255, 11, 78, 69, 84, 83, 67, 65, 80, 69, 50, 46, 48, 3, 1, 0, 0, 0 };
         private static byte[] Delay = { 20, 0 };
 
-        public static void ConvertPngsToJpg(string[] files)
+        public static void CreateGif(string currentFolder)
         {
-            for (int idx = 0; idx < files.Length; idx++)
-            {
-                using (var img = Image.FromFile(files[idx]))
-                {
-                    img.Save(Path.ChangeExtension(files[idx], "jpg"), ImageFormat.Jpeg);
-                }
-            }
-        }
+            string gifFolder = FileManager.GetGifFolder(currentFolder);
+            Directory.CreateDirectory(gifFolder);
 
-        public static void CreateGif(string pngfolder)
-        {
-            string gifFile = Path.Combine(pngfolder, "sf.gif");
+            string jpgFolder = FileManager.GetJpgFolder(currentFolder);
+            string gifFile = Path.Combine(gifFolder, "sf.gif");
 
             using (var ms = new MemoryStream())
-            //using (var br = new BinaryReader(ms))
             using (var bw = new BinaryWriter(new FileStream(gifFile, FileMode.Create)))
             {
-                string[] pngFiles = Directory.GetFiles(pngfolder, "*.png");
-                ConvertPngsToJpg(pngFiles);
-
-                string[] jpgFiles = Directory.GetFiles(pngfolder, "*.jpg").OrderBy(NumberPart).ToArray();
+                string[] jpgFiles = Directory.GetFiles(jpgFolder, "*.jpg").OrderBy(NumberPart).ToArray();
 
                 Image.FromFile(jpgFiles[0]).Save(ms, ImageFormat.Gif);
                 byte[] bytes = ms.ToArray();
