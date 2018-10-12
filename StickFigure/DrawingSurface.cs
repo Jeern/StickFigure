@@ -1,8 +1,10 @@
-﻿using Beebapps.Game.Input;
+﻿using System.Configuration;
+using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StickFigure.Graphics;
 using StickFigure.Input;
 
 namespace StickFigure
@@ -33,8 +35,6 @@ namespace StickFigure
             Current.GraphicsDeviceManager.PreferredBackBufferWidth = Consts.ScreenWidth;
             Current.GraphicsDeviceManager.PreferredBackBufferHeight = Consts.ScreenHeight;
             Current.GraphicsDeviceManager.ApplyChanges();
-            //Current.ViewPortSize = new Vector2(Consts.ScreenWidth, Consts.ScreenHeight);
-            //Current.GraphicsDevice.Viewport = new Viewport(0,0,Consts.ScreenWidth, Consts.ScreenHeight);
 
             base.Initialize();
         }
@@ -42,6 +42,9 @@ namespace StickFigure
         private MouseCursor _mouseCursor;
         private JointManager _jointManager;
         private LineManager _lineManager;
+
+        private Color _background;
+        private Color _foreground;
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -54,6 +57,9 @@ namespace StickFigure
             _lineManager = new LineManager(_mouseCursor);
             _jointManager = new JointManager(_mouseCursor, _lineManager);
             _sfFont = Content.Load<SpriteFont>("SF");
+
+            _background = ColorManager.GetColorFromHex(ConfigurationManager.AppSettings["BackgroundColor"]);
+            _foreground = ColorManager.GetColorFromHex(ConfigurationManager.AppSettings["ForegroundColor"]);
         }
 
         /// <summary>
@@ -124,11 +130,10 @@ namespace StickFigure
             GraphicsDevice.DepthStencilState = new DepthStencilState { DepthBufferEnable = true };
 
 //#90a959
-            GraphicsDevice.Clear(new Color(144, 169, 89));
-            //GraphicsDevice.Clear(Color.Transparent);
+            GraphicsDevice.Clear(_background);
             // Draw the scene
             Current.SpriteBatch.Begin();
-            DrawStickFigure(offSet, true, Color.White);
+            DrawStickFigure(offSet, true, _foreground);
             Current.SpriteBatch.End();
 
             // Drop the render target
