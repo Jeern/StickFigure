@@ -5,6 +5,7 @@ using Beebapps.Game.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StickFigure.Graphics;
 
 namespace StickFigure
 {

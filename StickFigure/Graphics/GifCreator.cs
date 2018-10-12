@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
-namespace StickFigure
+namespace StickFigure.Graphics
 {
     /// <summary>
     /// Code from https://social.msdn.microsoft.com/Forums/vstudio/en-US/0c4252c8-8274-449c-ad9b-e4f07a8f8cdd/how-could-i-create-an-animated-gif-file-from-several-other-jpg-files-in-c-express?forum=csharpgeneral

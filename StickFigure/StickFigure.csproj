@@ -45,14 +45,14 @@
     <Compile Include="DrawingSurface.cs" />
     <Compile Include="ConcreteJoint.cs" />
     <Compile Include="FileManager.cs" />
-    <Compile Include="GifCreator.cs" />
+    <Compile Include="Graphics\GifCreator.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="JointFile.cs" />
     <Compile Include="JointManager.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineManager.cs" />
-    <Compile Include="JpgCreator.cs" />
-    <Compile Include="PngCreator.cs" />
+    <Compile Include="Graphics\JpgCreator.cs" />
+    <Compile Include="Graphics\PngCreator.cs" />
     <Compile Include="TemplateJoint.cs" />
     <Compile Include="Joint.cs" />
     <Compile Include="MouseCursor.cs" />
