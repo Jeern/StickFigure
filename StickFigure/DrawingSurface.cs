@@ -281,7 +281,7 @@ namespace StickFigure
             Current.SpriteBatch.Begin();
 
             Current.SpriteBatch.DrawString(_sfFont, "Use Arrow keys - Left/Right to change shown file, and Up/Down to change the one that is Copied to or marked as Last.", new Vector2(20), Color.Black);
-            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng, (G)if", new Vector2(20, 40), Color.Black);
+            Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng and Jpg, (G)if", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
             DrawStickFigure(Vector2.Zero, false, Color.Black);
