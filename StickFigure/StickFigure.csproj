@@ -47,6 +47,7 @@
     <Compile Include="FileManager.cs" />
     <Compile Include="Graphics\GifCreator.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Input\InputManager.cs" />
     <Compile Include="JointFile.cs" />
     <Compile Include="JointManager.cs" />
     <Compile Include="Line.cs" />
