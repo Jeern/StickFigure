@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Beebapps.Game.Input;
 using Beebapps.Game.Utils;
 using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using StickFigure.Helpers;
 
-namespace StickFigure
+namespace StickFigure.Drawing
 {
     public class JointManager
     {

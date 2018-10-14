@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
-namespace StickFigure
+namespace StickFigure.Helpers
 {
     public static class FileManager
     {

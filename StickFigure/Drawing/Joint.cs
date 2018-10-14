@@ -2,7 +2,7 @@
 using C3.XNA;
 using Microsoft.Xna.Framework;
 
-namespace StickFigure
+namespace StickFigure.Drawing
 {
     public abstract class Joint
     {

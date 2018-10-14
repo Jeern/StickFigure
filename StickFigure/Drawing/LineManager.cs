@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace StickFigure
+namespace StickFigure.Drawing
 {
     public class LineManager
     {

@@ -1,4 +1,4 @@
-﻿namespace StickFigure
+﻿namespace StickFigure.Helpers
 {
     public static class Consts
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StickFigure
+namespace StickFigure.Helpers
 {
     public static class Globals
     {

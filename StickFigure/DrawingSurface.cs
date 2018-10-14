@@ -4,8 +4,11 @@ using Beebapps.Game.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using StickFigure.Drawing;
 using StickFigure.Graphics;
+using StickFigure.Helpers;
 using StickFigure.Input;
+using MouseCursor = StickFigure.Drawing.MouseCursor;
 
 namespace StickFigure
 {

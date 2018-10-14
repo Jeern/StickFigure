@@ -41,23 +41,23 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Consts.cs" />
+    <Compile Include="Helpers\Consts.cs" />
     <Compile Include="DrawingSurface.cs" />
     <Compile Include="ConcreteJoint.cs" />
-    <Compile Include="FileManager.cs" />
+    <Compile Include="Helpers\FileManager.cs" />
     <Compile Include="Graphics\ColorManager.cs" />
     <Compile Include="Graphics\GifCreator.cs" />
-    <Compile Include="Globals.cs" />
+    <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="JointFile.cs" />
-    <Compile Include="JointManager.cs" />
+    <Compile Include="Drawing\JointManager.cs" />
     <Compile Include="Line.cs" />
-    <Compile Include="LineManager.cs" />
+    <Compile Include="Drawing\LineManager.cs" />
     <Compile Include="Graphics\JpgCreator.cs" />
     <Compile Include="Graphics\PngCreator.cs" />
-    <Compile Include="TemplateJoint.cs" />
-    <Compile Include="Joint.cs" />
-    <Compile Include="MouseCursor.cs" />
+    <Compile Include="Drawing\TemplateJoint.cs" />
+    <Compile Include="Drawing\Joint.cs" />
+    <Compile Include="Drawing\MouseCursor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
