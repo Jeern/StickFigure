@@ -32,13 +32,5 @@ namespace Beebapps.Game.GraphicUtils
         {
             return image.Texture;
         }
-
-        public static implicit operator GameImage(Texture2D texture)
-        {
-            return new GameImage(texture);
-        }
-
-
-
     }
 }
