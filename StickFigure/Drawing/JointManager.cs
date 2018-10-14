@@ -46,7 +46,7 @@ namespace StickFigure.Drawing
 
             if (_draggingLine && _lineStartJoint != null)
             {
-                BeebappsGame.Current.SpriteBatch.DrawLine(_lineStartJoint.Position, _mouseCursor.Position, Color.Gray, 4f);
+                TheGame.Current.SpriteBatch.DrawLine(_lineStartJoint.Position, _mouseCursor.Position, Color.Gray, 4f);
             }
         }
 

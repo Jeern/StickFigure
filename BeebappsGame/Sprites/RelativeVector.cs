@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Beebapps.Game.Sprites
+namespace BeebappsGame.Sprites
 {
     public struct RelativeVector
     {

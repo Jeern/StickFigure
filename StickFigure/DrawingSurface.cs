@@ -15,7 +15,7 @@ namespace StickFigure
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class DrawingSurface : BeebappsGame
+    public class DrawingSurface : TheGame
     {
         private SpriteFont _sfFont;
 

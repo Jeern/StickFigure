@@ -25,7 +25,7 @@ namespace StickFigure.Drawing
         {
             if (!drawFinal || Visible)
             {
-                BeebappsGame.Current.SpriteBatch.DrawCircle(Position + offSet, Radius, 100, Visible ? color : Color.Red, Thickness);
+                TheGame.Current.SpriteBatch.DrawCircle(Position + offSet, Radius, 100, Visible ? color : Color.Red, Thickness);
             }
         }
 

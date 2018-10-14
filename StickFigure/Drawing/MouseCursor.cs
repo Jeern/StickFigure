@@ -17,7 +17,7 @@ namespace StickFigure.Drawing
 
         public void Draw(GameTime gameTime)
         {
-            BeebappsGame.Current.SpriteBatch.DrawCircle(Position, 4, 20, Color.Black, 2);
+            TheGame.Current.SpriteBatch.DrawCircle(Position, 4, 20, Color.Black, 2);
         }
     }
 }

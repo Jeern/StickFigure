@@ -46,9 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphicUtils\GameImage.cs" />
-    <Compile Include="GraphicUtils\ImageState.cs" />
-    <Compile Include="GraphicUtils\ITextureLoader.cs" />
-    <Compile Include="GraphicUtils\StateChangeType.cs" />
     <Compile Include="GraphicUtils\ViewPortExtensions.cs" />
     <Compile Include="Input\ClickTouch.cs" />
     <Compile Include="Input\Extensions.cs" />
@@ -62,7 +59,6 @@
     <Compile Include="Input\MouseExtended.cs" />
     <Compile Include="Input\MultiTouchExtended.cs" />
     <Compile Include="Input\MultitouchMouseWrap.cs" />
-    <Compile Include="Input\PinchTouch.cs" />
     <Compile Include="Input\TouchExtended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\ISwipeableScene.cs" />
@@ -92,7 +88,6 @@
     <Compile Include="Utils\Hashset.cs" />
     <Compile Include="Utils\HorizontalAlignment.cs" />
     <Compile Include="Utils\ILoadable.cs" />
-    <Compile Include="Utils\Misc.cs" />
     <Compile Include="Utils\MultiTouchArea.cs" />
     <Compile Include="Utils\PinchableArea.cs" />
     <Compile Include="Utils\Primitives2D.cs" />

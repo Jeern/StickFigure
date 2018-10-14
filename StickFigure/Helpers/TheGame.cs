@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Beebapps.Game.Utils
 {
-    public class BeebappsGame : Microsoft.Xna.Framework.Game
+    public class TheGame : Microsoft.Xna.Framework.Game
     {
         private static readonly Random _random = new Random();
         public static Random Random
@@ -13,8 +13,8 @@ namespace Beebapps.Game.Utils
         }
 
         private static readonly object Locker = new object();
-        private static BeebappsGame _game;
-        public static BeebappsGame
+        private static TheGame _game;
+        public static TheGame
             Current { get { return _game; }
                 private set 
                 {
@@ -43,7 +43,7 @@ namespace Beebapps.Game.Utils
 
         //public SpriteFont DebugFont { get; set; }
 
-        public BeebappsGame()
+        public TheGame()
         {
             Current = this;
             GraphicsDeviceManager = new GraphicsDeviceManager(this);
