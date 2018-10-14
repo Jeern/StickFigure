@@ -15,11 +15,13 @@ namespace StickFigure.Helpers
         {
             var dialog = new FolderBrowserDialog
             {
+                RootFolder = Environment.SpecialFolder.MyComputer,
                 Description = "Choose Stick Figure Folder",
-                SelectedPath = Directory.GetCurrentDirectory(),
-                ShowNewFolderButton = false,
-                RootFolder = Environment.SpecialFolder.MyComputer
+                SelectedPath = Globals.LastUsedPath ?? Directory.GetCurrentDirectory(),
+                ShowNewFolderButton = false
             };
+            SendKeys.SendWait("{TAB}{TAB}{RIGHT}");
+
             if (dialog.ShowDialog() == DialogResult.OK)
                 return dialog.SelectedPath;
             return "";

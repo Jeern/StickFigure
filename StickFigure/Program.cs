@@ -16,6 +16,7 @@ namespace StickFigure
         static void Main()
         {
             Globals.CurrentFolder = FileManager.ChooseFolder();
+            Globals.LastUsedPath = Globals.CurrentFolder;
             if(Globals.CurrentFolder == "")
                 return;
             Globals.CurrentShownNumber = 1;

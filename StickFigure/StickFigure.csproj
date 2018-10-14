@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Drawing\Primitives2D.cs" />
+    <Compile Include="Helpers\PersistedStorage.cs" />
     <Compile Include="Helpers\TheGame.cs" />
     <Compile Include="Helpers\Consts.cs" />
     <Compile Include="DrawingSurface.cs" />
