@@ -1,4 +1,4 @@
-﻿namespace Beebapps.Game.Input
+﻿namespace StickFigure.Input
 {
     public static class InputDeviceConstants
     {

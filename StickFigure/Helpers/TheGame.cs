@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Beebapps.Game.Utils
+namespace StickFigure.Helpers
 {
     public class TheGame : Microsoft.Xna.Framework.Game
     {

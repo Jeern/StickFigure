@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
-namespace Beebapps.Game.Input
+namespace StickFigure.Input
 {
     public class KeyboardExtended : InputDeviceExtended<KeyboardState>
     {

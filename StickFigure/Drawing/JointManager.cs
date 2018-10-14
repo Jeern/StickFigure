@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Beebapps.Game.Input;
-using Beebapps.Game.Utils;
 using C3.XNA;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using StickFigure.Helpers;
+using StickFigure.Input;
 
 namespace StickFigure.Drawing
 {

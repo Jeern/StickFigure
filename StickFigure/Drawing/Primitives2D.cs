@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+//The C3 Library - from here or some fork I think https://github.com/z2oh/C3.MonoGame.Primitives2D
 namespace C3.XNA
 {
     /// <summary>

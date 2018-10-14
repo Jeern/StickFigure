@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Beebapps.Game.Input
+namespace StickFigure.Input
 {
     /// <summary>
     /// </summary>

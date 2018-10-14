@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace Beebapps.Game.Input
+namespace StickFigure.Input
 {
     public class InputDeviceExtended<TS> where TS : struct
     {

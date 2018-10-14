@@ -1,7 +1,7 @@
-﻿using Beebapps.Game.Input;
-using Beebapps.Game.Utils;
-using C3.XNA;
+﻿using C3.XNA;
 using Microsoft.Xna.Framework;
+using StickFigure.Helpers;
+using StickFigure.Input;
 
 namespace StickFigure.Drawing
 {
