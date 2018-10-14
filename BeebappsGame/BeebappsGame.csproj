@@ -45,28 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicUtils\GameImage.cs" />
-    <Compile Include="Input\Extensions.cs" />
-    <Compile Include="Input\InputDeviceConstants.cs" />
-    <Compile Include="Input\InputDeviceExtended.cs" />
-    <Compile Include="Input\InputStateExtended.cs" />
-    <Compile Include="Input\KeyboardExtended.cs" />
-    <Compile Include="Input\MouseButton.cs" />
-    <Compile Include="Input\MouseExtended.cs" />
-    <Compile Include="Input\TouchExtended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sequencers\AlternatingSequencer.cs" />
-    <Compile Include="Sequencers\ForwardingSequencer.cs" />
-    <Compile Include="Sequencers\ISequencer.cs" />
-    <Compile Include="Sequencers\MinMaxIterator.cs" />
-    <Compile Include="Sequencers\RandomSequencer.cs" />
-    <Compile Include="Sequencers\RepeatingSequencer.cs" />
-    <Compile Include="Sequencers\SequenceCreator.cs" />
-    <Compile Include="Sequencers\SequencedIterator.cs" />
-    <Compile Include="Sequencers\Sequencer.cs" />
-    <Compile Include="Sequencers\StaticSequencer.cs" />
-    <Compile Include="Sprites\ISpatial.cs" />
-    <Compile Include="Text\VisualString.cs" />
     <Compile Include="Utils\Animation.cs" />
     <Compile Include="Utils\BaseTextures.cs" />
     <Compile Include="Utils\ClickableArea.cs" />
@@ -85,7 +64,6 @@
     <Compile Include="Utils\Resetable.cs" />
     <Compile Include="Utils\SpriteBatchExtensions.cs" />
     <Compile Include="Utils\StoryBoard.cs" />
-    <Compile Include="Utils\TouchableAreaUpdateable.cs" />
     <Compile Include="Utils\UpdateableRectangle.cs" />
     <Compile Include="Utils\VectorExtensions.cs" />
     <Compile Include="Utils\VerticalAlignment.cs" />

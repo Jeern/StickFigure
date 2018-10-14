@@ -49,7 +49,14 @@
     <Compile Include="Graphics\ColorManager.cs" />
     <Compile Include="Graphics\GifCreator.cs" />
     <Compile Include="Helpers\Globals.cs" />
+    <Compile Include="Input\Extensions.cs" />
+    <Compile Include="Input\InputDeviceConstants.cs" />
+    <Compile Include="Input\InputDeviceExtended.cs" />
     <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\InputStateExtended.cs" />
+    <Compile Include="Input\KeyboardExtended.cs" />
+    <Compile Include="Input\MouseButton.cs" />
+    <Compile Include="Input\MouseExtended.cs" />
     <Compile Include="JointFile.cs" />
     <Compile Include="Drawing\JointManager.cs" />
     <Compile Include="Line.cs" />
