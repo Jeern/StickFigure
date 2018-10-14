@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StickFigure", "StickFigure\StickFigure.csproj", "{6A78D4CF-BFD9-4976-96B3-EDDE2A5A77F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeebappsGame", "BeebappsGame\BeebappsGame.csproj", "{40AE4771-38C1-4F4B-80C0-D0A99C01F405}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,14 +19,6 @@ Global
 		{6A78D4CF-BFD9-4976-96B3-EDDE2A5A77F6}.Release|Any CPU.ActiveCfg = Release|x86
 		{6A78D4CF-BFD9-4976-96B3-EDDE2A5A77F6}.Release|x86.ActiveCfg = Release|x86
 		{6A78D4CF-BFD9-4976-96B3-EDDE2A5A77F6}.Release|x86.Build.0 = Release|x86
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Debug|x86.Build.0 = Debug|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Release|x86.ActiveCfg = Release|Any CPU
-		{40AE4771-38C1-4F4B-80C0-D0A99C01F405}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

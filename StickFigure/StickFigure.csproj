@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Drawing\Primitives2D.cs" />
     <Compile Include="Helpers\TheGame.cs" />
     <Compile Include="Helpers\Consts.cs" />
     <Compile Include="DrawingSurface.cs" />
@@ -99,12 +100,6 @@
     <None Include="App.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BeebappsGame\BeebappsGame.csproj">
-      <Project>{40ae4771-38c1-4f4b-80c0-d0a99c01f405}</Project>
-      <Name>BeebappsGame</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
