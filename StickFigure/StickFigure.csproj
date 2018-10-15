@@ -51,6 +51,7 @@
     <Compile Include="Graphics\ColorManager.cs" />
     <Compile Include="Graphics\GifCreator.cs" />
     <Compile Include="Helpers\Globals.cs" />
+    <Compile Include="Input\ButtonStateExtended.cs" />
     <Compile Include="Input\Extensions.cs" />
     <Compile Include="Input\InputDeviceConstants.cs" />
     <Compile Include="Input\InputDeviceExtended.cs" />

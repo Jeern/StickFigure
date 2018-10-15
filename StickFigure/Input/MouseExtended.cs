@@ -6,10 +6,7 @@ namespace StickFigure.Input
     public class MouseExtended : InputDeviceExtended<MouseState>
     {
         private static MouseExtended _current;
-        public static MouseExtended Current
-        {
-            get { return _current ?? (_current = new MouseExtended()); }
-        }
+        public static MouseExtended Current => _current ?? (_current = new MouseExtended());
 
         public MouseState GetState(GameTime currentTime)
         {
