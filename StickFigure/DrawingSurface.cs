@@ -43,6 +43,7 @@ namespace StickFigure
         private MouseCursor _mouseCursor;
         private JointManager _jointManager;
         private LineManager _lineManager;
+        private MarkingRectangleManager _markingRectangleManager;
 
         private Color _background;
         private Color _foreground;
@@ -57,6 +58,8 @@ namespace StickFigure
             _mouseCursor = new MouseCursor();
             _lineManager = new LineManager(_mouseCursor);
             _jointManager = new JointManager(_mouseCursor, _lineManager);
+            _markingRectangleManager = new MarkingRectangleManager(_mouseCursor, _jointManager);
+
             _sfFont = Content.Load<SpriteFont>("SF");
 
             _background = ColorManager.GetColorFromHex(ConfigurationManager.AppSettings["BackgroundColor"]);
@@ -88,8 +91,15 @@ namespace StickFigure
             InputManager.RefreshFiles(_jointManager);
 
             _mouseCursor.Update(gameTime);
+
+            _markingRectangleManager.Update(gameTime);
+
             _lineManager.Update(gameTime);
-            _jointManager.Update(gameTime);
+
+            if (!_markingRectangleManager.IsDragging && !_markingRectangleManager.IsMarking)
+            {
+                _jointManager.Update(gameTime);
+            }
 
             InputManager.LeftRightArrowKey();
             InputManager.UpDOwnArrowKey();
@@ -117,6 +127,8 @@ namespace StickFigure
             Current.SpriteBatch.DrawString(_sfFont, $"Current #{Globals.CurrentShownNumber}, (S)ave #{Globals.CurrentShownNumber}, (C)opy #{Globals.CurrentShownNumber} to #{Globals.CurrentActionNumber}, Mark #{Globals.CurrentActionNumber} as (L)ast, (I)n-between generation, (P)ng and Jpg, (G)if", new Vector2(20, 40), Color.Black);
 
             _mouseCursor.Draw(gameTime);
+            _markingRectangleManager.Draw(gameTime);
+
             DrawStickFigure(Vector2.Zero, false, Color.Black);
 
             Current.SpriteBatch.End();

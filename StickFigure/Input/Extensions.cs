@@ -32,6 +32,11 @@ namespace StickFigure.Input
                    (wasPressed ? Input.ButtonStateExtended.WasPressed : Input.ButtonStateExtended.WasReleased);
         }
 
+        public static bool CheckState(this ButtonStateExtended stateToCheck, ButtonStateExtended stateToCheckAgainst)
+        {
+            return (stateToCheck & stateToCheckAgainst) == stateToCheckAgainst;
+        }
+
         private static ButtonState ButtonStateOfButton(MouseState state, MouseButton button)
         {
             switch (button)

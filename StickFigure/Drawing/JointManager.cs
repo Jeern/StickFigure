@@ -113,6 +113,18 @@ namespace StickFigure.Drawing
             }
         }
 
+        public void RemoveAnyJointOutsideArea()
+        {
+            foreach (var joint in _concreteJoints.ToList())
+            {
+                if (!IsWithinDrawArea(joint.Position))
+                {
+                    _concreteJoints.Remove(joint);
+                    _lineManager.DeleteJoint(joint);
+                }
+            }
+        }
+
         private Joint GetFirstTouching(MouseCursor cursor)
         {
             foreach (var joint in _templateJoints)
@@ -133,16 +145,57 @@ namespace StickFigure.Drawing
 
         public bool IsWithinDrawArea(MouseCursor cursor)
         {
-            if (cursor.Position.X < 100)
+            return IsWithinDrawArea(cursor.Position);
+        }
+
+        public bool IsWithinDrawArea(Vector2 position)
+        {
+            if (position.X < 100)
                 return false;
-            if (cursor.Position.Y < 50)
+            if (position.Y < 50)
                 return false;
-            if (cursor.Position.X > Consts.ScreenWidth)
+            if (position.X > Consts.ScreenWidth)
                 return false;
-            if (cursor.Position.Y > Consts.ScreenHeight)
+            if (position.Y > Consts.ScreenHeight)
                 return false;
             return true;
         }
+
+
+        public bool IsTouching(MouseCursor cursor)
+        {
+            return GetFirstTouching(cursor) != null;
+        }
+
+        //public void MoveAllCirclesWithinRectangleOffset(Rectangle? rectangle, Vector2 offset)
+        //{
+        //    if (!rectangle.HasValue)
+        //        return;
+
+        //    foreach (var concreteJoint in _concreteJoints)
+        //    {
+        //        if (rectangle.Value.Contains(concreteJoint.Position))
+        //        {
+        //            concreteJoint.Position += offset;
+        //        }
+        //    }
+        //    RemoveAnyJointOutsideArea();
+        //}
+
+        public IEnumerable<ConcreteJoint> GetJointsWithinRectangle(Rectangle? rectangle)
+        {
+            if (!rectangle.HasValue)
+                yield break;
+
+            foreach (var concreteJoint in _concreteJoints)
+            {
+                if (rectangle.Value.Contains(concreteJoint.Position))
+                {
+                    yield return concreteJoint;
+                }
+            }
+        }
+       
 
         public JointFile ToFile()
         {

@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Drawing\MarkingRectangleManager.cs" />
     <Compile Include="Drawing\Primitives2D.cs" />
     <Compile Include="Helpers\PersistedStorage.cs" />
     <Compile Include="Helpers\TheGame.cs" />
