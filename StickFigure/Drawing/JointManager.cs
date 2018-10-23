@@ -49,6 +49,8 @@ namespace StickFigure.Drawing
             }
         }
 
+        public bool IsDragging => _draggingJoint != null;
+
         public void Update(GameTime gameTime)
         {
             if (MouseExtended.Current.CurrentState.LeftButton == ButtonState.Pressed)

@@ -97,6 +97,9 @@ namespace StickFigure.Drawing
                 return;
             }
 
+            if (_jointManager.IsDragging)
+                return;
+
             if (!IsDragging && !IsMarking && _jointManager.IsTouching(_cursor))
                 return;
 
