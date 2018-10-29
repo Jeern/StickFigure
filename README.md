@@ -28,7 +28,7 @@ The following is a basic stick man drawn using the above techniques.
 
 ![First Stick man](Images/draw2.png)
 
-You can drag multiple circle joints by marking them with a rectangle (left mouse button and drag outside a circle) lick this:
+You can drag multiple circle joints by marking them with a rectangle (left mouse button and drag outside a circle) like this:
 
 ![First Stick man moved](Images/draw3.png)
 
