@@ -16,7 +16,7 @@ When you start the program you will be asked to choose a folder - this is where 
 
 After that you get this screen with the drawing area.
 
-![Basic drawing area](Images\draw1.png)
+![Basic drawing area](Images/draw1.png)
 
 The three black circles can be dragged (left mouse button down) to the drawing area (the big white area) to create body parts, the can also be dragged outside of the drawing area to delete them.
 
@@ -26,11 +26,11 @@ You can draw lines between the circles with the right mouse button. The lines ca
 
 The following is a basic stick man drawn using the above techniques.
 
-![First Stick man](Images\draw2.png)
+![First Stick man](Images/draw2.png)
 
 You can drag multiple circle joints by marking them with a rectangle (left mouse button and drag outside a circle) lick this:
 
-![First Stick man moved](Images\draw3.png)
+![First Stick man moved](Images/draw3.png)
 
 ## Animating the stick man
 
@@ -57,7 +57,7 @@ Currently the GIF will be created with a background color and foreground color s
 
 Here is a sample GIF with black background and white foreground of a man squatting. You can experiment with it by opening the sample folder when starting the program.
 
-![Squatting man](Images\draw4.gif)
+![Squatting man](Images/draw4.gif)
 
 
 
