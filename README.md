@@ -8,7 +8,7 @@ It is a windows program and uses Monogame and the full .NET framework as its fou
 
 The controls are extremely simplistic, but easy to use.
 
-It is not a very polished program but works and I ams ure you will not be able generate animated GIF stick figures faster in any other program. Though you will probably be able to make them prettier in other programs :)
+It is not a very polished program but works and I am sure you will not be able generate animated GIF stick figures faster in any other program. Though you will probably be able to make them prettier in other programs :)
 
 ## The Basic drawing experience
 
@@ -34,7 +34,7 @@ You can drag multiple circle joints by marking them with a rectangle (left mouse
 
 ## Animating the stick man
 
-For creating your animated stick man gif you have to use several controls.
+For creating your animated stick man GIF you have to use several controls.
 
 The folder you chose first will contain all the frames - just json serialized description of the joint positions.
 
@@ -46,7 +46,7 @@ Lets say you copy frame 1 to frame 8, and move the content of frame 8 a bit (rem
 
 In that way you can plan your animation. If you want the animation to end where it started you can mark the final frame as Last by pressing L. This basicly deletes the frame and marks it to be a copy of frame 1. So be careful.
 
-When finished there is only the Gif generation left.
+When finished there is only the GIF generation left.
 
 The generation is done in several steps because I had to use different technologies.
 
@@ -58,6 +58,8 @@ Currently the GIF will be created with a background color and foreground color s
 Here is a sample GIF with black background and white foreground of a man squatting. You can experiment with it by opening the sample folder when starting the program.
 
 ![Squatting man](Images/draw4.gif)
+
+Quirks: Currently in this first draft there are several - one thing to be careful about is that when you move to a new frame with the arrow keys, the old frame is not saved, so you have to save whatever changes you have before you press an arrow key. The fact that you have to generate PNGS and JPGs before generating the GIF is also a bit weird.
 
 
 
