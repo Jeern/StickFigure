@@ -53,7 +53,7 @@ namespace StickFigure.Graphics
 
         private static  void WriteGifImg(byte[] bytes, BinaryWriter bw)
         {
-            bytes[785] = Delay[0]; //5 secs delay
+            bytes[785] = Delay[0]; 
             bytes[786] = Delay[1];
             bytes[798] = (byte)(bytes[798] | 0X87);
             bw.Write(bytes, 781, 18);
