@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.IO.IsolatedStorage;
 
 namespace StickFigure.Helpers
@@ -8,10 +9,16 @@ namespace StickFigure.Helpers
         public static string Get(string key)
         {
             using (var isoStore = IsolatedStorageFile.GetMachineStoreForAssembly())
-            using (var fs = isoStore.OpenFile($"{key}.txt", FileMode.Open))
-            using (var sr = new StreamReader(fs))
             {
-                return sr.ReadToEnd();
+                if (isoStore.FileExists($"{key}.txt"))
+                {
+                    using (var fs = isoStore.OpenFile($"{key}.txt", FileMode.Open))
+                    using (var sr = new StreamReader(fs))
+                    {
+                        return sr.ReadToEnd();
+                    }
+                }
+                return null;
             }
         }
 
